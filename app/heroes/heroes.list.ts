@@ -3,72 +3,13 @@ import {Router} from "@angular/router";
 import {HttpService} from "../common/core/http.service";
 @Component({
   selector: 'heroes-list-page',
-  template: `<div>
+  template: `<div *ngFor="let item of items">
                     <div (click)="onSelect('zhangsan')">张三</div>
                     <div (click)="onSelect('lisi')">李四</div>
                     <div (click)="gotoDemo()">DEMO</div>
                     <div (click)="gotoCross()">CROSS</div>
                 </div>
-                <div>
-                    <div (click)="onSelect('zhangsan')">张三</div>
-                    <div (click)="onSelect('lisi')">李四</div>
-                    <div (click)="gotoDemo()">DEMO</div>
-                    <div (click)="gotoCross()">CROSS</div>
-                </div>
-                <div>
-                    <div (click)="onSelect('zhangsan')">张三</div>
-                    <div (click)="onSelect('lisi')">李四</div>
-                    <div (click)="gotoDemo()">DEMO</div>
-                    <div (click)="gotoCross()">CROSS</div>
-                </div>
-                <div>
-                    <div (click)="onSelect('zhangsan')">张三</div>
-                    <div (click)="onSelect('lisi')">李四</div>
-                    <div (click)="gotoDemo()">DEMO</div>
-                    <div (click)="gotoCross()">CROSS</div>
-                </div>
-                <div>
-                    <div (click)="onSelect('zhangsan')">张三</div>
-                    <div (click)="onSelect('lisi')">李四</div>
-                    <div (click)="gotoDemo()">DEMO</div>
-                    <div (click)="gotoCross()">CROSS</div>
-                </div>
-                <div>
-                    <div (click)="onSelect('zhangsan')">张三</div>
-                    <div (click)="onSelect('lisi')">李四</div>
-                    <div (click)="gotoDemo()">DEMO</div>
-                    <div (click)="gotoCross()">CROSS</div>
-                </div>
-                <div>
-                    <div (click)="onSelect('zhangsan')">张三</div>
-                    <div (click)="onSelect('lisi')">李四</div>
-                    <div (click)="gotoDemo()">DEMO</div>
-                    <div (click)="gotoCross()">CROSS</div>
-                </div>
-                <div>
-                    <div (click)="onSelect('zhangsan')">张三</div>
-                    <div (click)="onSelect('lisi')">李四</div>
-                    <div (click)="gotoDemo()">DEMO</div>
-                    <div (click)="gotoCross()">CROSS</div>
-                </div>
-                <div>
-                    <div (click)="onSelect('zhangsan')">张三</div>
-                    <div (click)="onSelect('lisi')">李四</div>
-                    <div (click)="gotoDemo()">DEMO</div>
-                    <div (click)="gotoCross()">CROSS</div>
-                </div>
-                <div>
-                    <div (click)="onSelect('zhangsan')">张三</div>
-                    <div (click)="onSelect('lisi')">李四</div>
-                    <div (click)="gotoDemo()">DEMO</div>
-                    <div (click)="gotoCross()">CROSS</div>
-                </div>
-                <div>
-                    <div (click)="onSelect('zhangsan')">张三</div>
-                    <div (click)="onSelect('lisi')">李四</div>
-                    <div (click)="gotoDemo()">DEMO</div>
-                    <div (click)="gotoCross()">CROSS</div>
-                </div>
+                
                 <div class="search-results"
                     infinite-scroll
                     [infiniteScrollDistance]="2"
@@ -79,12 +20,7 @@ import {HttpService} from "../common/core/http.service";
 })
 export class HeroesListPageComponent {
 
-
-  onLoaded() {
-    // if (this.loadingShade) {
-    //   this.loadingShade.hasLoaded();
-    // }
-  }
+  private items:any;
 
   constructor(private router: Router,
               private httpService: HttpService) {
@@ -96,6 +32,12 @@ export class HeroesListPageComponent {
     setTimeout(()=> {
       this.onLoaded();
     }, 1000)
+  }
+
+  onLoaded(){
+    this.items = [
+      {},{},{},{},{},{},
+    ]
   }
 
   onSelect(name: any) {
@@ -113,5 +55,9 @@ export class HeroesListPageComponent {
 
   onScroll(){
     console.log('onScroll ... ')
+    setTimeout(()=>{
+      this.items.push({});
+
+    },1000)
   }
 }
