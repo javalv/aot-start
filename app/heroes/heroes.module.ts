@@ -1,6 +1,5 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {FormsModule} from "@angular/forms";
 import {heroesRouting} from './heroes.routing';
 import {HeroesDetailComponent} from "./heroes.detail";
 import {HeroesPageComponent} from "./heroes";
@@ -10,11 +9,11 @@ import {HeroesService} from "./heroes.service";
 import {BaseComponent} from "../common/base/com.base";
 import {DemoDetailComponent} from "./demo";
 import {ChildrenComponent} from "./children.componet";
+import {InfiniteScroll} from "../common/scroller/infinite-scroll";
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     heroesRouting,
     SharedModule
   ],
@@ -23,7 +22,8 @@ import {ChildrenComponent} from "./children.componet";
     HeroesDetailComponent,
     HeroesPageComponent,
     DemoDetailComponent,
-    ChildrenComponent
+    ChildrenComponent,
+    InfiniteScroll
     // BaseComponent
   ],
   providers: [

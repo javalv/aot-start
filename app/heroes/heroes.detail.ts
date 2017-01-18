@@ -19,7 +19,7 @@ import {LoadingShadeComponent} from "../common/shared/shared.loading";
 })
 export class HeroesDetailComponent extends BaseComponent/* implements OnInit, OnDestroy */ {
   @ViewChild(LoadingShadeComponent)
-  private loadingShade: LoadingShadeComponent;
+  loadingShade: LoadingShadeComponent;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -28,7 +28,7 @@ export class HeroesDetailComponent extends BaseComponent/* implements OnInit, On
     super();
   }
 
-  private name: any;
+  name: any;
   private sub: Subscription;
 
   ngOnInit() {

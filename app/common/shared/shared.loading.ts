@@ -27,7 +27,7 @@ import {Component,
 
 })
 export class LoadingShadeComponent {
-  private shrinkOut : string;
+  shrinkOut : string;
   constructor() {
     this.shrinkOut = 'in';
   }

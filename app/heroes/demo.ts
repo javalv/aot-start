@@ -52,9 +52,9 @@ import {  Component,
 })
 export class DemoDetailComponent {
 
-  private hero : Hero;
+  hero : Hero;
 
-  private shrinkOut : string;
+  shrinkOut : string;
 
   constructor(){
     this.hero = new Hero();

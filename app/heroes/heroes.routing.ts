@@ -7,14 +7,8 @@ import {DemoDetailComponent} from "./demo";
 
 const heroesRoutes:Routes = <Routes>[
     {
-        path: '',
-        component: HeroesPageComponent,
-        children: [
-            {path: '', component: HeroesListPageComponent},
-            // {path: ':id', component: HeroesDetailComponent},
-            {path: 'demo', component: DemoDetailComponent},
-            {path: 'hero/:id', component: HeroesDetailComponent}
-        ]
+        path: '', component: HeroesPageComponent,
+
     }
 ];
 

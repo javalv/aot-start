@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {HttpService} from "./common/core/http.service";
 
 
 @Component({
