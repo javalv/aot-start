@@ -15,7 +15,7 @@ import {InfiniteScroll} from "../common/scroller/infinite-scroll";
   imports: [
     CommonModule,
     heroesRouting,
-    SharedModule
+    SharedModule,
   ],
   declarations: [
     HeroesListPageComponent,

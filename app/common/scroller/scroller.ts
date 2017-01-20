@@ -2,7 +2,7 @@ import { ElementRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { AxisResolver } from './axis-resolver';
-import {PositionResolver, PositionResolverFactory, PositionElements} from './position-resolver';
+import { PositionResolver, PositionResolverFactory } from './position-resolver';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/observable/timer';
 import 'rxjs/add/operator/debounce';
@@ -56,7 +56,7 @@ export class Scroller {
     // }
     this.handleInfiniteScrollDisabled(scrollDisabled);
     this.defineContainer();
-    this.positionResolver = this._positionResolver.create(<PositionElements>{
+    this.positionResolver = this._positionResolver.create({
       container: this.container,
       documentElement: this.documentElement,
       isContainerWindow: this.isContainerWindow,

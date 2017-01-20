@@ -1,26 +1,37 @@
 import {Component, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {HttpService} from "../common/core/http.service";
+// import {InfiniteScroll} from "../common/scroller/infinite-scroll";
 @Component({
   selector: 'heroes-list-page',
+  styles: [
+    `.search-results {
+            height: 20rem;
+            overflow: scroll;
+        }`
+  ],
   template: `<div *ngFor="let item of items">
                     <div (click)="onSelect('zhangsan')">张三</div>
                     <div (click)="onSelect('lisi')">李四</div>
-                    <div (click)="gotoDemo()">DEMO</div>
+                    <div (click)="gotoDemo()">王五</div>
                     <div (click)="gotoCross()">CROSS</div>
                 </div>
                 
                 <div class="search-results"
                     infinite-scroll
                     [infiniteScrollDistance]="2"
+                    [infiniteScrollThrottle]="500"
                     (scrolled)="onScroll()">
                 </div>
+                
                 <load-shade ></load-shade>`,
+
+
 
 })
 export class HeroesListPageComponent {
 
-  private items:any;
+  items:any;
 
   constructor(private router: Router,
               private httpService: HttpService) {
@@ -36,7 +47,7 @@ export class HeroesListPageComponent {
 
   onLoaded(){
     this.items = [
-      {},{},{},{},{},{},
+      {},{},{},{},{},{},{},{},{},{},{},{},
     ]
   }
 
@@ -54,7 +65,7 @@ export class HeroesListPageComponent {
   }
 
   onScroll(){
-    console.log('onScroll ... ')
+    console.log("onScroll ...");
     setTimeout(()=>{
       this.items.push({});
 

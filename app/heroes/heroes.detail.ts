@@ -1,4 +1,8 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {
+  Component, OnDestroy, OnInit, ViewChild, HostBinding,
+  trigger, transition, animate,
+  style, state
+} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
 import {BaseComponent} from "../common/base/com.base";
@@ -15,9 +19,45 @@ import {LoadingShadeComponent} from "../common/shared/shared.loading";
                 </div>
                 <span (click)="next()">next</span> 
                 <load-shade ></load-shade>`,
+  animations: [
+    trigger('routeAnimation', [
+      state('*',
+        style({
+          opacity: 1,
+          transform: 'translateX(0)'
+        })
+      ),
+      transition('void => *', [
+        style({
+          opacity: 0,
+          transform: 'translateX(-100%)'
+        }),
+        animate('0.8s ease-in')
+      ]),
+      transition('* => void', [
+        animate('0.5s ease-out', style({
+          opacity: 0,
+          transform: 'translateY(100%)'
+        }))
+      ])
+    ])
+  ]
 
 })
 export class HeroesDetailComponent extends BaseComponent/* implements OnInit, OnDestroy */ {
+
+  @HostBinding('@routeAnimation') get routeAnimation() {
+    return true;
+  }
+
+  @HostBinding('style.display') get display() {
+    return 'block';
+  }
+
+  @HostBinding('style.position') get position() {
+    return 'absolute';
+  }
+
   @ViewChild(LoadingShadeComponent)
   loadingShade: LoadingShadeComponent;
 
@@ -39,7 +79,6 @@ export class HeroesDetailComponent extends BaseComponent/* implements OnInit, On
       this.loadingShade.hasLoaded();
       this.request();
     }, 1000);
-
 
 
     // this.name = this.route.snapshot.params['id']; 这种方式为不需要连续调用详情页，常规模式

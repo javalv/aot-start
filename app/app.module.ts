@@ -12,7 +12,7 @@ import {AxisResolverFactory} from "./common/scroller/axis-resolver";
     BrowserModule,
     // CoreModule.forRoot({host:'192.168.10.1',port:8080}),
     routing,
-    HeroesModule
+    HeroesModule,
   ],
   declarations: [
     AppComponent,
