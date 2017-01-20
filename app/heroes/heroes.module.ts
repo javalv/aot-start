@@ -9,13 +9,14 @@ import {HeroesService} from "./heroes.service";
 import {BaseComponent} from "../common/base/com.base";
 import {DemoDetailComponent} from "./demo";
 import {ChildrenComponent} from "./children.componet";
-import {InfiniteScroll} from "../common/scroller/infinite-scroll";
+import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 
 @NgModule({
   imports: [
     CommonModule,
     heroesRouting,
     SharedModule,
+    InfiniteScrollModule,
   ],
   declarations: [
     HeroesListPageComponent,
@@ -23,7 +24,6 @@ import {InfiniteScroll} from "../common/scroller/infinite-scroll";
     HeroesPageComponent,
     DemoDetailComponent,
     ChildrenComponent,
-    InfiniteScroll
     // BaseComponent
   ],
   providers: [

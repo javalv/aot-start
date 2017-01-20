@@ -1,14 +1,13 @@
 import {Component, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {HttpService} from "../common/core/http.service";
-// import {InfiniteScroll} from "../common/scroller/infinite-scroll";
 @Component({
   selector: 'heroes-list-page',
   styles: [
-    `.search-results {
-            height: 20rem;
-            overflow: scroll;
-        }`
+    // `.search-results {
+    //         height: 20rem;
+    //         overflow: scroll;
+    //     }`
   ],
   template: `<div *ngFor="let item of items">
                     <div (click)="onSelect('zhangsan')">张三</div>
@@ -21,7 +20,8 @@ import {HttpService} from "../common/core/http.service";
                     infinite-scroll
                     [infiniteScrollDistance]="2"
                     [infiniteScrollThrottle]="500"
-                    (scrolled)="onScroll()">
+                    (scrolled)="onScroll()"
+                    [scrollWindow]="true">
                 </div>
                 
                 <load-shade ></load-shade>`,
@@ -65,6 +65,18 @@ export class HeroesListPageComponent {
   }
 
   onScroll(){
+    alert(1);
+  }
+
+  onScrollDown(){
+    console.log("onScroll ...");
+    setTimeout(()=>{
+      this.items.push({});
+
+    },1000)
+  }
+
+  onScrollUp(){
     console.log("onScroll ...");
     setTimeout(()=>{
       this.items.push({});

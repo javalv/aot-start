@@ -5,8 +5,6 @@ import {routing} from "./app.routing";
 import {HomePageComponent} from "./app.home";
 import {HttpServiceConfig, HttpService} from "./common/core/http.service";
 import {HeroesModule} from "./heroes/heroes.module";
-import {PositionResolverFactory} from "./common/scroller/position-resolver";
-import {AxisResolverFactory} from "./common/scroller/axis-resolver";
 @NgModule({
   imports: [
     BrowserModule,
@@ -20,8 +18,6 @@ import {AxisResolverFactory} from "./common/scroller/axis-resolver";
   ],
   providers: [
     HttpService,
-    PositionResolverFactory,
-    AxisResolverFactory,
     {provide: HttpServiceConfig, useValue: {host: '192.168.10.2', port: 8080}}
   ],
   bootstrap: [AppComponent]
