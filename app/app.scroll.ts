@@ -22,11 +22,7 @@ import {Component} from '@angular/core'
   `],
     template: `
     <h1 class="title well">{{ title }} <small>items: {{sum}}</small></h1>
-    <div class="search-results"
-         infinite-scroll
-         [infiniteScrollDistance]="scrollDistance"
-         [infiniteScrollThrottle]="throttle"
-         (scrolled)="onScrollDown()">
+    <div class="search-results">
       <p *ngFor="let i of array">
         {{ i.name }}
       </p>
@@ -47,7 +43,6 @@ export class AppComponent {
             {"name":"zhangsan"},
             {"name":"zhangsan"},
             {"name":"zhangsan"},
-            {"name":"zhangsan"},{"name":"zhangsan"},
             {"name":"zhangsan"},
             {"name":"zhangsan"},
             {"name":"zhangsan"},
@@ -65,16 +60,24 @@ export class AppComponent {
             {"name":"zhangsan"},
             {"name":"zhangsan"},
             {"name":"zhangsan"},
-            {"name":"zhangsan"},{"name":"zhangsan"},
+            {"name":"zhangsan"},
+            {"name":"zhangsan"},
+            {"name":"zhangsan"},
+            {"name":"zhangsan"},
 
 
         ];
     }
 
+    ngOnInit(){
+        window.onscroll = function () {
+            alert(2);
+        }
+    }
 
     onScrollDown () {
         console.log('scrolled!!');
-        alert(1);
+        alert(2);
 
 
     }
