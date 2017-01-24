@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 
-
 @Component({
   moduleId: module.id,
     selector: 'home-page',
@@ -9,8 +8,11 @@ import {Component} from '@angular/core';
 export class HomePageComponent {
 
     constructor(){
+
+
     }
 
     ngOnInit(){
+
     }
 }

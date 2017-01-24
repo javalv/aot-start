@@ -104,7 +104,7 @@ export class HeroesDetailComponent extends BaseComponent/* implements OnInit, On
   }
 
   private request(): void {
-    console.log("heroes: " + this.heroesService.getCrises("123"));
+    console.log("heroes: " + this.heroesService.getCrises("",{}));
   }
 
   onVoted(agreed: boolean) {

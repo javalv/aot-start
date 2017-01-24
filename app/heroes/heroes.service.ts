@@ -5,19 +5,10 @@ export class HeroesService {
 
     constructor(private httpService:HttpService){}
 
-    getCrises(result:any) {
-        return new Promise<string>(resolve => {
-            setTimeout(() => {
-                if(result){
-                    console.log("service: " + this.httpService.getName());
-                    resolve(result);
-                }else{
+    getCrises(url:string,params:any) {
 
-                }
+        return this.httpService.get(url,params);
 
-            }, 1000);
-        });
     }
-
 
 }

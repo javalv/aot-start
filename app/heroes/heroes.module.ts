@@ -10,6 +10,7 @@ import {BaseComponent} from "../common/base/com.base";
 import {DemoDetailComponent} from "./demo";
 import {ChildrenComponent} from "./children.componet";
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { InfiniteScrollModule } from 'angular2-infinite-scroll';
     heroesRouting,
     SharedModule,
     InfiniteScrollModule,
+    HttpModule,
   ],
   declarations: [
     HeroesListPageComponent,

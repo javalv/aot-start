@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {HttpService} from "../common/core/http.service";
+import {HeroesService} from "./heroes.service";
 //import {Observer} from "rxjs/Observer";
 @Component({
   selector: 'heroes-list-page',
@@ -39,12 +40,22 @@ export class HeroesListPageComponent {
   items:any;
 
   constructor(private router: Router,
-              private httpService: HttpService) {
+              private httpService: HttpService,
+              private heroesService:HeroesService) {
     // super();
   }
 
   ngOnInit() {
-    console.log(this.httpService.getName())
+    // let result = this.heroesService.getCrises("http://localhost/api/common/fetch_server_time",{});
+    // console.log(result);
+    this.heroesService.getCrises("/common/fetch_server_time",{})
+      .then(
+        (result:any) => {
+          alert(JSON.stringify(result));
+          console.log(result);
+        },
+     );
+
     setTimeout(()=> {
       this.onLoaded();
     }, 1000)
