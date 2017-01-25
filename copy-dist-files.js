@@ -1,5 +1,38 @@
+
 var fs = require( 'fs' ),
     stat = fs.stat;
+
+
+//删除
+deleteFolderRecursive = function(path) {
+
+  var files = [];
+
+  if( fs.existsSync(path) ) {
+
+    files = fs.readdirSync(path);
+
+    files.forEach(function(file,index){
+
+      var curPath = path + "/" + file;
+
+      if(fs.statSync(curPath).isDirectory()) { // recurse
+
+        deleteFolderRecursive(curPath);
+
+      } else { // delete file
+
+        fs.unlinkSync(curPath);
+
+      }
+
+    });
+
+    fs.rmdirSync(path);
+
+  }
+
+};
 
 /*
  * 复制目录中的所有文件包括子目录
@@ -52,16 +85,24 @@ var exists = function( src, dst, callback ){
     }
   });
 };
-var resources = [
+
+
+var copyFiles = function (resources) {
+  resources.map(function(f) {
+    var path = f.split('/');
+    var t = 'aot/' + path[path.length-1];
+    fs.createReadStream(f).pipe(fs.createWriteStream(t));
+  });
+}
+
+
+deleteFolderRecursive('./aot/public');
+
+copyFiles([
   'node_modules/core-js/client/shim.min.js',
   'node_modules/zone.js/dist/zone.min.js',
   'styles.css'
-];
-resources.map(function(f) {
-  var path = f.split('/');
-  var t = 'aot/' + path[path.length-1];
-  fs.createReadStream(f).pipe(fs.createWriteStream(t));
-});
+]);
 // 复制目录
 exists( './public', './aot/public', copy );
 
