@@ -14,7 +14,7 @@ deleteFolderRecursive = function(path) {
         fs.unlinkSync(curPath);
       }
     });
-    // fs.rmdirSync(path);
+    fs.rmdirSync(path);
   }
 };
 
@@ -79,8 +79,10 @@ var copyFiles = function (resources) {
   });
 }
 
-var mkdir = function (dst) {
-  fs.mkdir( dst);
+var mkdir = function (dst,fn) {
+  if(!fs.existsSync(dst)){
+    fs.mkdir( dst,fn);
+  }
 }
 
 //压缩
@@ -100,19 +102,23 @@ var mkdir = function (dst) {
 
 
 
-deleteFolderRecursive('build');
-// mkdir("./build/target");
-//
-// copyFiles([
-//   'node_modules/core-js/client/shim.min.js',
-//   'node_modules/zone.js/dist/zone.min.js',
-//   'aot/index.html',
-//   'aot/conf.js'
-// ]);
-// // 复制目录
-// exists( './public', './build/target/public', copy );
+deleteFolderRecursive('./build');
+mkdir("./build",function () {
+  mkdir("./build/target",function () {
+    console.log("create target");
+    copyFiles([
+      'node_modules/core-js/client/shim.min.js',
+      'node_modules/zone.js/dist/zone.min.js',
+      'aot/index.html',
+      'aot/conf.js'
+    ]);
+// 复制目录
+    exists( './public', './build/target/public', copy );
+  });
+});
 
-// zip();
+
+
 
 var fs = require('fs');
 
