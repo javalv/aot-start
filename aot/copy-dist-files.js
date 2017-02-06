@@ -14,7 +14,7 @@ deleteFolderRecursive = function(path) {
         fs.unlinkSync(curPath);
       }
     });
-    fs.rmdirSync(path);
+    // fs.rmdirSync(path);
   }
 };
 
@@ -74,21 +74,45 @@ var exists = function( src, dst, callback ){
 var copyFiles = function (resources) {
   resources.map(function(f) {
     var path = f.split('/');
-    var t = 'aot/' + path[path.length-1];
+    var t = 'build/target/' + path[path.length-1];
     fs.createReadStream(f).pipe(fs.createWriteStream(t));
   });
 }
 
+var mkdir = function (dst) {
+  fs.mkdir( dst);
+}
 
-deleteFolderRecursive('./aot/public');
+//压缩
+// var zip = function () {
+//   var archiver = require('archiver');
+//   var output = fs.createWriteStream('build/archiver-unzip.tar');
+//   var archive = archiver('tar');
+//   archive.on('error', function(err){
+//     throw err;
+//   });
+//   archive.pipe(output);
+//   archive.bulk([
+//     { src: ['build/target/**']}
+//   ]);
+//   archive.finalize();
+// }
 
-copyFiles([
-  'node_modules/core-js/client/shim.min.js',
-  'node_modules/zone.js/dist/zone.min.js',
-  'styles.css'
-]);
-// 复制目录
-exists( './public', './aot/public', copy );
 
-//var fs = require('fs');
+
+deleteFolderRecursive('build');
+// mkdir("./build/target");
+//
+// copyFiles([
+//   'node_modules/core-js/client/shim.min.js',
+//   'node_modules/zone.js/dist/zone.min.js',
+//   'aot/index.html',
+//   'aot/conf.js'
+// ]);
+// // 复制目录
+// exists( './public', './build/target/public', copy );
+
+// zip();
+
+var fs = require('fs');
 

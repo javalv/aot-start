@@ -1,7 +1,9 @@
 import {Injectable, Optional} from '@angular/core';
 import {Http, Response,Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import '../../conf.js'
 declare var config: any
+// import configTest = require('../../main');
 
 export class HttpServiceConfig {
   host: string;
@@ -19,6 +21,7 @@ export class HttpService {
     // @Optional() config: HttpServiceConfig,
               http: Http) {
 
+    // console.log(configTest.host)
     console.info('http.service is loading...')
 
     if (config) {
@@ -39,7 +42,7 @@ export class HttpService {
   }
 
 
-  public get(url:string,params:any) : Promise<any> {
+  public get(url:string,params?:any) : Promise<any> {
     let headers = new Headers({
       'Content-Type': 'application/json',
       'mplus-ua':'{"merchant_id":"1","merchant_token":"","token":"","user_id":"","data_version":"","device":"ios"}'
@@ -47,7 +50,7 @@ export class HttpService {
     let options = new RequestOptions({headers: headers});
 
     let getUrl = this.getHost() + url;
-    if(params && params != 'undefined'){
+    if(params){
       let params_len = Object.getOwnPropertyNames(params).length;
       if(params_len > 0){
         getUrl = getUrl + "?" ;

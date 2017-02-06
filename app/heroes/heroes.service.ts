@@ -3,12 +3,17 @@ import {HttpService} from "../common/core/http.service";
 @Injectable()
 export class HeroesService {
 
-    constructor(private httpService:HttpService){}
+  constructor(private httpService: HttpService) {
+  }
 
-    getCrises(url:string,params:any) {
+  getCrises(url: string, params: any) {
+    return this.httpService.get(url, params);
 
-        return this.httpService.get(url,params);
+  }
 
-    }
+  getServerTime(url: string) {
+    return this.httpService.get(url);
+
+  }
 
 }

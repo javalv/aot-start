@@ -48,13 +48,12 @@ export class HeroesListPageComponent {
   ngOnInit() {
     // let result = this.heroesService.getCrises("http://localhost/api/common/fetch_server_time",{});
     // console.log(result);
-    this.heroesService.getCrises("/common/fetch_server_time",{})
+    this.heroesService.getServerTime("/common/fetch_server_time")
       .then(
         (result:any) => {
-          alert(JSON.stringify(result));
-          console.log(result);
-        },
-     );
+            // alert(JSON.stringify(result));
+            console.log(result);
+          });
 
     setTimeout(()=> {
       this.onLoaded();
@@ -124,6 +123,7 @@ export class HeroesListPageComponent {
 export class Emitter {
   /** 监听数组 */
   private static listeners = {};
+
 
   /**
    * 注册事件
