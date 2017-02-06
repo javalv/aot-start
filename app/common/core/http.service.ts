@@ -1,7 +1,7 @@
 import {Injectable, Optional} from '@angular/core';
 import {Http, Response,Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import '../../conf.js'
+// import '../../conf.js'
 declare var config: any
 // import configTest = require('../../main');
 

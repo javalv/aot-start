@@ -52,14 +52,14 @@ function func():ClockConstructor{
   let clock : Clock = new Clock();
   return clock;
 }
-
-
-class TestString{
-  test(host:"张三"){
-    console.log("TestString:" + host());
-  }
-}
-new TestString().test(function () {
-  console.log(1)
-  return -1;
-});
+//
+//
+// class TestString{
+//   test(host:"张三"){
+//     console.log("TestString:" + host());
+//   }
+// }
+// new TestString().test(function () {
+//   console.log(1)
+//   return -1;
+// });
