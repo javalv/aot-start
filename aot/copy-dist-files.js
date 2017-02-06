@@ -85,23 +85,6 @@ var mkdir = function (dst,fn) {
   }
 }
 
-//压缩
-// var zip = function () {
-//   var archiver = require('archiver');
-//   var output = fs.createWriteStream('build/archiver-unzip.tar');
-//   var archive = archiver('tar');
-//   archive.on('error', function(err){
-//     throw err;
-//   });
-//   archive.pipe(output);
-//   archive.bulk([
-//     { src: ['build/target/**']}
-//   ]);
-//   archive.finalize();
-// }
-
-
-
 deleteFolderRecursive('./build');
 mkdir("./build",function () {
   mkdir("./build/target",function () {
@@ -110,15 +93,10 @@ mkdir("./build",function () {
       'node_modules/core-js/client/shim.min.js',
       'node_modules/zone.js/dist/zone.min.js',
       'aot/index.html',
-      'aot/conf.js'
+      'aot/conf.js',
     ]);
 // 复制目录
     exists( './public', './build/target/public', copy );
   });
 });
-
-
-
-
-var fs = require('fs');
 

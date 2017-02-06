@@ -1,4 +1,17 @@
 var fs = require( 'fs' );
+
+var copyFiles = function (resources) {
+  resources.map(function(f) {
+    var path = f.split('/');
+    var t = 'build/target/' + path[path.length-1];
+    fs.createReadStream(f).pipe(fs.createWriteStream(t));
+  });
+}
+
+copyFiles([
+  'aot/dist/build.js',
+]);
+
 var zip = require("node-native-zip");
 var path = require("path");
 //要压缩文件夹所在的父目录
@@ -25,3 +38,4 @@ var dirToZip = '';
     console.log("im finished");
   });
 }())
+
